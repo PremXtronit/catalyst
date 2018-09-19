@@ -24,12 +24,12 @@ public class NYTimesService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", String.valueOf(MediaType.TEXT_PLAIN));
-
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         Map<String, String> params = new HashMap<String, String>();
         params.put("section", "all-sections");
         params.put("period", "7");
 
-        String url = "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/{section}/{period}.json?api-key=sample-key";
+        String url = "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/{section}/{period}.json?api-key=sample-key";
         URI uri = UriComponentsBuilder.fromUriString(url)
                 .buildAndExpand(params)
                 .toUri();
@@ -43,7 +43,5 @@ public class NYTimesService {
                 String.class);
 
         return response.getBody();
-
-
     }
 }
