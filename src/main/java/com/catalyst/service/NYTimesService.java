@@ -43,7 +43,5 @@ public class NYTimesService {
                 String.class);
 
         return response.getBody();
-
-
     }
 }
