@@ -1,6 +1,7 @@
 package com.catalyst.controller;
 
 import com.catalyst.common.Apis;
+import com.catalyst.dto.Response;
 import com.catalyst.service.NYTimesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,15 +20,12 @@ public class NYTimesController {
     @Autowired
     private NYTimesService nyTimesService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String messages(Model model) {
-        model.addAttribute("messages", "hello");
-        return "NyTimes";
-    }
 
     @GetMapping(value = Apis.GET_ARTICLE)
     public String getNYTimesArticles(Model model) {
         try {
+
+            System.out.println(nyTimesService.getNYTimesArticles());
             model.addAttribute("response", nyTimesService.getNYTimesArticles());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -37,7 +35,7 @@ public class NYTimesController {
             model.addAttribute("response", res);
         }
 
-        return "show_response";
+        return "NyTimes";
     }
 
 }

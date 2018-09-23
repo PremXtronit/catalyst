@@ -1,5 +1,6 @@
 package com.catalyst.controller;
 
+import com.catalyst.dto.Response;
 import com.catalyst.service.NYTimesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 public class NYTimesController {
 
 
-    String response = "success";
+    private Response response;
+
     @Autowired
     private MockMvc mockMvc;
 

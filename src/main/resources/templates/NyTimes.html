@@ -3,12 +3,49 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>NyTime Article Reader</title>
+    <title>Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 </head>
 <body>
 <div class="container">
-    <h4><a th:href="${'/nyTimesArticle/'}">Click here to see NY Time article</a></h4>
+    <div th:if="${not #lists.isEmpty(response.results)}">
+        <h1>Ny Times News</h1>
+        <table class="highlight">
+            <thead>
+            <tr>
+                <th>type</th>
+                <th>title</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="result: ${response.results}">
+                <td th:text="${result.type}"></td>
+                <td th:text="${result.title}"></td>
+
+                <table class="highlight">
+                    <thead>
+                    <tr>
+                        <th>type</th>
+                        <th>subtype</th>
+                        <th>caption</th>
+                        <th>approved_for_syndication</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="media: ${result.media}">
+                        <td th:text="${media.type}"></td>
+                        <td th:text="${media.subtype}"></td>
+                        <td th:text="${media.caption}"></td>
+                        <td th:text="${media.approved_for_syndication
+                        }"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
