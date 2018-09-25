@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 </head>
 <body>
-<div class="container">
+<div class="container" bgcolor="#ffd9cc">
     <div th:if="${not #lists.isEmpty(response.results)}">
         <h1>Ny Times News</h1>
-        <table class="highlight">
+        <table class="highlight" bgcolor="#99ffcc">
             <thead>
             <tr>
                 <th>type</th>
@@ -22,7 +22,7 @@
                 <td th:text="${result.type}"></td>
                 <td th:text="${result.title}"></td>
 
-                <table class="highlight">
+                <table class="highlight" bgcolor="#e6fff2">
                     <thead>
                     <tr>
                         <th>type</th>
